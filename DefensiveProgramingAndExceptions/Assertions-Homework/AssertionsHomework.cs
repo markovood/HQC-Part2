@@ -2,18 +2,30 @@
 using System.Linq;
 using System.Diagnostics;
 
-class AssertionsHomework
+public class AssertionsHomework
 {
     public static void SelectionSort<T>(T[] arr) where T : IComparable<T>
     {
-        for (int index = 0; index < arr.Length-1; index++)
+        if (arr == null || arr.Length == 0)
+        {
+            throw new ArgumentNullException("arr", "Passed array is null or empty");
+        }
+
+        if (arr.Length == 1)
+        {
+            return;
+        }
+
+        for (int index = 0; index < arr.Length - 1; index++)
         {
             int minElementIndex = FindMinElementIndex(arr, index, arr.Length - 1);
             Swap(ref arr[index], ref arr[minElementIndex]);
         }
+
+        Debug.Assert(arr[0].CompareTo(arr[1]) < 0, "Sorting failed!");
     }
-  
-    private static int FindMinElementIndex<T>(T[] arr, int startIndex, int endIndex) 
+
+    private static int FindMinElementIndex<T>(T[] arr, int startIndex, int endIndex)
         where T : IComparable<T>
     {
         int minElementIndex = startIndex;
@@ -24,6 +36,7 @@ class AssertionsHomework
                 minElementIndex = i;
             }
         }
+
         return minElementIndex;
     }
 
@@ -36,10 +49,27 @@ class AssertionsHomework
 
     public static int BinarySearch<T>(T[] arr, T value) where T : IComparable<T>
     {
+        if (arr == null || arr.Length == 0)
+        {
+            throw new ArgumentNullException("arr", "Passed array is null or empty");
+        }
+
+        if (arr.Length == 1)
+        {
+            if (arr[0].CompareTo(value) == 0)
+            {
+                return Convert.ToInt32(value);
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
         return BinarySearch(arr, value, 0, arr.Length - 1);
     }
 
-    private static int BinarySearch<T>(T[] arr, T value, int startIndex, int endIndex) 
+    private static int BinarySearch<T>(T[] arr, T value, int startIndex, int endIndex)
         where T : IComparable<T>
     {
         while (startIndex <= endIndex)
@@ -54,9 +84,9 @@ class AssertionsHomework
                 // Search on the right half
                 startIndex = midIndex + 1;
             }
-            else 
+            else
             {
-                // Search on the right half
+                // Search on the left half
                 endIndex = midIndex - 1;
             }
         }
@@ -65,7 +95,7 @@ class AssertionsHomework
         return -1;
     }
 
-    static void Main()
+    public static void Main()
     {
         int[] arr = new int[] { 3, -1, 15, 4, 17, 2, 33, 0 };
         Console.WriteLine("arr = [{0}]", string.Join(", ", arr));
