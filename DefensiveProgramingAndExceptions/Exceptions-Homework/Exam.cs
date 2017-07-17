@@ -2,5 +2,5 @@
 
 public abstract class Exam
 {
-    public abstract ExamResult Check();
+    public abstract ExamResult GetExamResult();
 }

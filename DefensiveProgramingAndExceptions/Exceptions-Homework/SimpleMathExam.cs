@@ -2,23 +2,24 @@
 
 public class SimpleMathExam : Exam
 {
-    public int ProblemsSolved { get; private set; }
-
     public SimpleMathExam(int problemsSolved)
     {
         if (problemsSolved < 0)
         {
-            problemsSolved = 0;
+            this.ProblemsSolved = 0;
         }
-        if (problemsSolved > 10)
+
+        if (problemsSolved > 2)
         {
-            problemsSolved = 10;
+            this.ProblemsSolved = 2;
         }
 
         this.ProblemsSolved = problemsSolved;
     }
 
-    public override ExamResult Check()
+    public int ProblemsSolved { get; private set; }
+    
+    public override ExamResult GetExamResult()
     {
         if (ProblemsSolved == 0)
         {
@@ -26,13 +27,13 @@ public class SimpleMathExam : Exam
         }
         else if (ProblemsSolved == 1)
         {
-            return new ExamResult(4, 2, 6, "Average result: nothing done.");
+            return new ExamResult(4, 2, 6, "Average result: good.");
         }
         else if (ProblemsSolved == 2)
         {
-            return new ExamResult(6, 2, 6, "Average result: nothing done.");
+            return new ExamResult(6, 2, 6, "Great result: good job.");
         }
 
-        return new ExamResult(0, 0, 0, "Invalid number of problems solved!");
+        throw new InvalidOperationException("Invalid number of problems solved!");
     }
 }
