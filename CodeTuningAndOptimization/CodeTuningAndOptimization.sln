@@ -5,6 +5,12 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolarSystem", "SolarSystem\SolarSystem.csproj", "{2F30E9AF-8256-40AF-B356-EA14E55CE9D7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComparingSimpleMath", "ComparingSimpleMath\ComparingSimpleMath.csproj", "{7F0F1913-1E87-4649-A433-C5DE24D22AA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComparingAdvancedMath", "ComparingAdvancedMath\ComparingAdvancedMath.csproj", "{D5D8438F-B372-4CD6-882B-F61737537A71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComparingSortAlgorithms", "ComparingSortAlgorithms\ComparingSortAlgorithms.csproj", "{ABAB8505-8997-4597-96C9-15C8DABA51B1}"
+EndProject
 Global
 	GlobalSection(Performance) = preSolution
 		HasPerformanceSessions = true
@@ -14,10 +20,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2F30E9AF-8256-40AF-B356-EA14E55CE9D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2F30E9AF-8256-40AF-B356-EA14E55CE9D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F30E9AF-8256-40AF-B356-EA14E55CE9D7}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{2F30E9AF-8256-40AF-B356-EA14E55CE9D7}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{2F30E9AF-8256-40AF-B356-EA14E55CE9D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F30E9AF-8256-40AF-B356-EA14E55CE9D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F0F1913-1E87-4649-A433-C5DE24D22AA0}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{7F0F1913-1E87-4649-A433-C5DE24D22AA0}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{7F0F1913-1E87-4649-A433-C5DE24D22AA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F0F1913-1E87-4649-A433-C5DE24D22AA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5D8438F-B372-4CD6-882B-F61737537A71}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{D5D8438F-B372-4CD6-882B-F61737537A71}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{D5D8438F-B372-4CD6-882B-F61737537A71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5D8438F-B372-4CD6-882B-F61737537A71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABAB8505-8997-4597-96C9-15C8DABA51B1}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{ABAB8505-8997-4597-96C9-15C8DABA51B1}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{ABAB8505-8997-4597-96C9-15C8DABA51B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABAB8505-8997-4597-96C9-15C8DABA51B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
