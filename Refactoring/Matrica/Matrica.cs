@@ -4,7 +4,7 @@ namespace Task3
 {
     public class WalkInMatrica
     {
-        public static void Change(ref int dx, ref int dy)
+        private static void Change(ref int dx, ref int dy)
         {
             int[] dirX = { 1, 1, 1, 0, -1, -1, -1, 0 };
             int[] dirY = { 1, 0, -1, -1, -1, 0, 1, 1 };
@@ -29,7 +29,7 @@ namespace Task3
             dy = dirY[cd + 1];
         }
 
-        public static bool Proverka(int[,] arr, int x, int y)
+        private static bool Proverka(int[,] arr, int x, int y)
         {
             int[] dirX = { 1, 1, 1, 0, -1, -1, -1, 0 };
             int[] dirY = { 1, 0, -1, -1, -1, 0, 1, 1 };
@@ -58,7 +58,7 @@ namespace Task3
             return false;
         }
 
-        public static void Find_cell(int[,] arr, out int x, out int y)
+        private static void Find_cell(int[,] arr, out int x, out int y)
         {
             x = 0;
             y = 0;
@@ -76,6 +76,19 @@ namespace Task3
             }
         }
 
+        private static void PrintMatrix(int[,] matrix)
+        {
+            for (int row = 0; row < matrix.GetLength(0); row++)
+            {
+                for (int col = 0; col < matrix.GetLength(1); col++)
+                {
+                    Console.Write("{0,3}", matrix[row, col]);
+                }
+
+                Console.WriteLine();
+            }
+        }
+
         public static void Main()
         {
             //Console.WriteLine("Enter a positive number: ");
@@ -87,21 +100,29 @@ namespace Task3
             //    input = Console.ReadLine(  );
             //}
             int n = 6;
-            int[,] matrica = new int[n, n];
+            int[,] matrix = new int[n, n];
 
             int step = n, k = 1, row = 0, col = 0, dx = 1, dy = 1;
             while (true)
             {
-                matrica[row, col] = k;
+                matrix[row, col] = k;
 
-                if (!Proverka(matrica, row, col))
+                if (!Proverka(matrix, row, col))
                 {
                     break;
                 }
 
-                if (row + dx >= n || row + dx < 0 || col + dy >= n || col + dy < 0 || matrica[row + dx, col + dy] != 0)
+                if (row + dx >= n ||
+                    row + dx < 0 ||
+                    col + dy >= n ||
+                    col + dy < 0 ||
+                    matrix[row + dx, col + dy] != 0)
                 {
-                    while (row + dx >= n || row + dx < 0 || col + dy >= n || col + dy < 0 || matrica[row + dx, col + dy] != 0)
+                    while (row + dx >= n ||
+                            row + dx < 0 ||
+                            col + dy >= n ||
+                            col + dy < 0 ||
+                            matrix[row + dx, col + dy] != 0)
                     {
                         Change(ref dx, ref dy);
                     }
@@ -110,17 +131,9 @@ namespace Task3
                 row += dx; col += dy; k++;
             }
 
-            for (int p = 0; p < n; p++)
-            {
-                for (int q = 0; q < n; q++)
-                {
-                    Console.Write("{0,3}", matrica[p, q]);
-                }
+            PrintMatrix(matrix);
 
-                Console.WriteLine();
-            }
-
-            Find_cell(matrica, out row, out col);
+            Find_cell(matrix, out row, out col);
 
             if (row != 0 && col != 0)
             { // taka go napravih, zashtoto funkciqta ne mi davashe da ne si definiram out parametrite
@@ -128,15 +141,23 @@ namespace Task3
 
                 while (true)
                 {
-                    matrica[row, col] = k;
-                    if (!Proverka(matrica, row, col))
+                    matrix[row, col] = k;
+                    if (!Proverka(matrix, row, col))
                     {
                         break;
                     }
 
-                    if (row + dx >= n || row + dx < 0 || col + dy >= n || col + dy < 0 || matrica[row + dx, col + dy] != 0)
+                    if (row + dx >= n ||
+                        row + dx < 0 ||
+                        col + dy >= n ||
+                        col + dy < 0 ||
+                        matrix[row + dx, col + dy] != 0)
                     {
-                        while (row + dx >= n || row + dx < 0 || col + dy >= n || col + dy < 0 || matrica[row + dx, col + dy] != 0)
+                        while (row + dx >= n ||
+                                row + dx < 0 || 
+                                col + dy >= n ||
+                                col + dy < 0 || 
+                                matrix[row + dx, col + dy] != 0)
                         {
                             Change(ref dx, ref dy);
                         }
@@ -146,15 +167,7 @@ namespace Task3
                 }
             }
 
-            for (int pp = 0; pp < n; pp++)
-            {
-                for (int qq = 0; qq < n; qq++)
-                {
-                    Console.Write("{0,3}", matrica[pp, qq]);
-                }
-
-                Console.WriteLine();
-            }
+            PrintMatrix(matrix);
         }
     }
 }
