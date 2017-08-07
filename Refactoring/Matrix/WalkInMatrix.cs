@@ -4,44 +4,102 @@ namespace Matrix
 {
     public class WalkInMatrix
     {
-        public static void Main()
+        private int n;
+
+        private int[,] matrix;
+
+        private int cellCounter, row, col, dx, dy;
+
+        private IReadable reader;
+
+        private IWritable writer;
+
+        public WalkInMatrix(IReadable reader, IWritable writer)
         {
-            Console.WriteLine("Enter a positive number ");
-            string input = Console.ReadLine();
-            int n = 0;
-            while (!int.TryParse(input, out n) ||
-                    n < 0 ||
-                    n > 100)
+            this.reader = reader;
+            this.writer = writer;
+
+            this.SizeN = reader.ReadSize();
+            this.matrix = new int[this.SizeN, this.SizeN];
+            this.cellCounter = 1;
+            this.row = 0;
+            this.col = 0;
+            this.dx = 1;
+            this.dy = 1;
+        }
+
+        public int SizeN
+        {
+            get
             {
-                Console.WriteLine("You haven't entered a correct positive number");
-                input = Console.ReadLine();
+                return this.n;
             }
 
-            // int n = 3;
-            int[,] matrix = new int[n, n];
-            int cellCounter = 1, row = 0, col = 0, dx = 1, dy = 1;
+            set
+            {
+                if (value < 1)
+                {
+                    throw new ArgumentOutOfRangeException("n", "Size cannot be less than 1");
+                }
+
+                if (value > 100)
+                {
+                    throw new ArgumentOutOfRangeException("n", "Size cannot be greater than 100");
+                }
+
+                this.n = value;
+            }
+        }
+
+        public static void Main()
+        {
+            var reader = new Reader();
+            var writer = new Writer();
+            var walk = new WalkInMatrix(reader, writer);
+            walk.Execute();
+        }
+
+        private void Execute()
+        {
+            this.Walk(this.matrix, this.row, this.col, this.dx, this.dy, this.cellCounter);
+
+            this.FindCell(this.matrix, out this.row, out this.col);
+
+            if (this.row != 0 && this.col != 0)
+            { // taka go napravih, zashtoto funkciqta ne mi davashe da ne si definiram out parametrite
+                this.dx = 1;
+                this.dy = 1;
+
+                this.Walk(this.matrix, this.row, this.col, this.dx, this.dy, this.cellCounter);
+            }
+
+            this.Print(this.matrix, this.writer);
+        }
+
+        private void Walk(int[,] matrix, int row, int col, int dx, int dy, int cellCounter)
+        {
             while (true)
             {
                 matrix[row, col] = cellCounter;
 
-                if (!CheckAvailability(matrix, row, col))
+                if (!this.CheckAvailability(matrix, row, col))
                 {
                     break;
                 }
 
-                if (row + dx >= n ||
+                if (row + dx >= this.SizeN ||
                     row + dx < 0 ||
-                    col + dy >= n ||
+                    col + dy >= this.SizeN ||
                     col + dy < 0 ||
                     matrix[row + dx, col + dy] != 0)
                 {
-                    while (row + dx >= n ||
+                    while (row + dx >= this.SizeN ||
                             row + dx < 0 ||
-                            col + dy >= n ||
+                            col + dy >= this.SizeN ||
                             col + dy < 0 ||
                             matrix[row + dx, col + dy] != 0)
                     {
-                        Change(ref dx, ref dy);
+                        this.ChangeDirection(ref dx, ref dy);
                     }
                 }
 
@@ -49,66 +107,9 @@ namespace Matrix
                 col += dy;
                 cellCounter++;
             }
-
-            for (int p = 0; p < n; p++)
-            {
-                for (int q = 0; q < n; q++)
-                {
-                    Console.Write("{0,3}", matrix[p, q]);
-                }
-
-                Console.WriteLine();
-            }
-
-            FindCell(matrix, out row, out col);
-
-            if (row != 0 && col != 0)
-            { // taka go napravih, zashtoto funkciqta ne mi davashe da ne si definiram out parametrite
-                dx = 1;
-                dy = 1;
-
-                while (true)
-                {
-                    matrix[row, col] = cellCounter;
-                    if (!CheckAvailability(matrix, row, col))
-                    {
-                        break;
-                    }
-
-                    if (row + dx >= n ||
-                        row + dx < 0 ||
-                        col + dy >= n ||
-                        col + dy < 0 ||
-                        matrix[row + dx, col + dy] != 0)
-                    {
-                        while (row + dx >= n ||
-                                row + dx < 0 ||
-                                col + dy >= n ||
-                                col + dy < 0 ||
-                                matrix[row + dx, col + dy] != 0)
-                        {
-                            Change(ref dx, ref dy);
-                        }
-                    }
-
-                    row += dx;
-                    col += dy;
-                    cellCounter++;
-                }
-            }
-
-            for (int pp = 0; pp < n; pp++)
-            {
-                for (int qq = 0; qq < n; qq++)
-                {
-                    Console.Write("{0,3}", matrix[pp, qq]);
-                }
-
-                Console.WriteLine();
-            }
         }
 
-        private static void Change(ref int dx, ref int dy)
+        private void ChangeDirection(ref int dx, ref int dy)
         {
             int[] dirX = { 1, 1, 1, 0, -1, -1, -1, 0 };
             int[] dirY = { 1, 0, -1, -1, -1, 0, 1, 1 };
@@ -134,7 +135,7 @@ namespace Matrix
             dy = dirY[cd + 1];
         }
 
-        private static bool CheckAvailability(int[,] arr, int x, int y)
+        private bool CheckAvailability(int[,] arr, int x, int y)
         {
             int[] dirX = { 1, 1, 1, 0, -1, -1, -1, 0 };
             int[] dirY = { 1, 0, -1, -1, -1, 0, 1, 1 };
@@ -163,7 +164,7 @@ namespace Matrix
             return false;
         }
 
-        private static void FindCell(int[,] arr, out int x, out int y)
+        private void FindCell(int[,] arr, out int x, out int y)
         {
             x = 0;
             y = 0;
@@ -178,6 +179,19 @@ namespace Matrix
                         return;
                     }
                 }
+            }
+        }
+
+        private void Print(int[,] matrix, IWritable writer)
+        {
+            for (int row = 0; row < matrix.GetLength(0); row++)
+            {
+                for (int col = 0; col < matrix.GetLength(1); col++)
+                {
+                    writer.Write(string.Format("{0,3}", matrix[row, col]));
+                }
+
+                writer.WriteLine();
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using Moq;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace Matrix.Tests
         {
             // Walk in the matrix is walk that starts form the top left corner of the matrix 
             // Arrange
-
+            var walk = new Mock<WalkInMatrix>();
 
             // Act
 
