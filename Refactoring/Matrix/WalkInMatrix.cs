@@ -28,6 +28,14 @@ namespace Matrix
             this.dy = 1;
         }
 
+        public int[,] Matrix
+        {
+            get
+            {
+                return this.matrix;
+            }
+        }
+
         public int SizeN
         {
             get
@@ -59,24 +67,25 @@ namespace Matrix
             walk.Execute();
         }
 
-        private void Execute()
+        public void Execute()
         {
-            this.Walk(this.matrix, this.row, this.col, this.dx, this.dy, this.cellCounter);
+            this.Walk(this.matrix, this.row, this.col, this.dx, this.dy, ref this.cellCounter);
 
             this.FindCell(this.matrix, out this.row, out this.col);
 
+            // if position is matrix[0, 0] that means it is already full
             if (this.row != 0 && this.col != 0)
-            { // taka go napravih, zashtoto funkciqta ne mi davashe da ne si definiram out parametrite
+            {
                 this.dx = 1;
                 this.dy = 1;
 
-                this.Walk(this.matrix, this.row, this.col, this.dx, this.dy, this.cellCounter);
+                this.Walk(this.matrix, this.row, this.col, this.dx, this.dy, ref this.cellCounter);
             }
 
             this.Print(this.matrix, this.writer);
         }
 
-        private void Walk(int[,] matrix, int row, int col, int dx, int dy, int cellCounter)
+        private void Walk(int[,] matrix, int row, int col, int dx, int dy, ref int cellCounter)
         {
             while (true)
             {
@@ -84,6 +93,7 @@ namespace Matrix
 
                 if (!this.CheckAvailability(matrix, row, col))
                 {
+                    cellCounter++;
                     break;
                 }
 
