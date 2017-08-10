@@ -69,9 +69,9 @@ namespace Matrix
 
         public void Execute()
         {
-            this.Walk(this.matrix, this.row, this.col, this.dx, this.dy, ref this.cellCounter);
+            this.Walk(ref this.cellCounter);
 
-            this.FindCell(this.matrix, out this.row, out this.col);
+            this.FindCell(ref this.row, ref this.col);
 
             // if position is matrix[0, 0] that means it is already full
             if (this.row != 0 && this.col != 0)
@@ -79,57 +79,65 @@ namespace Matrix
                 this.dx = 1;
                 this.dy = 1;
 
-                this.Walk(this.matrix, this.row, this.col, this.dx, this.dy, ref this.cellCounter);
+                this.Walk(ref this.cellCounter);
             }
 
-            this.Print(this.matrix, this.writer);
+            this.Print(this.writer);
         }
 
-        private void Walk(int[,] matrix, int row, int col, int dx, int dy, ref int cellCounter)
+        private void Walk(ref int cellCounter)
         {
             while (true)
             {
-                matrix[row, col] = cellCounter;
+                this.matrix[this.row, this.col] = cellCounter;
 
-                if (!this.CheckAvailability(matrix, row, col))
+                if (!this.CheckAvailability(this.row, this.col))
                 {
                     cellCounter++;
                     break;
                 }
 
-                if (row + dx >= this.SizeN ||
-                    row + dx < 0 ||
-                    col + dy >= this.SizeN ||
-                    col + dy < 0 ||
-                    matrix[row + dx, col + dy] != 0)
+                if (this.IsNextCellIllegal())
                 {
-                    while (row + dx >= this.SizeN ||
-                            row + dx < 0 ||
-                            col + dy >= this.SizeN ||
-                            col + dy < 0 ||
-                            matrix[row + dx, col + dy] != 0)
+                    while (this.IsNextCellIllegal())
                     {
-                        this.ChangeDirection(ref dx, ref dy);
+                        this.ChangeDirection(ref this.dx, ref this.dy);
                     }
                 }
 
-                row += dx;
-                col += dy;
+                this.row += this.dx;
+                this.col += this.dy;
                 cellCounter++;
             }
         }
 
+        private bool IsNextCellIllegal()
+        {
+            if (this.row + this.dx >= this.SizeN ||
+                this.row + this.dx < 0 ||
+                this.col + this.dy >= this.SizeN ||
+                this.col + this.dy < 0 ||
+                this.matrix[this.row + this.dx, this.col + this.dy] != 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         private void ChangeDirection(ref int dx, ref int dy)
         {
+            // possible directions according to current x/y (1 means below/next current row/col, -1 above/before, 0 the
+            // same row/col)
             int[] dirX = { 1, 1, 1, 0, -1, -1, -1, 0 };
             int[] dirY = { 1, 0, -1, -1, -1, 0, 1, 1 };
 
             int cd = 0;
-            for (int count = 0; count < 8; count++)
+            for (int i = 0; i < 8; i++)
             {
-                if (dirX[count] == dx && dirY[count] == dy)
+                if (dirX[i] == dx && dirY[i] == dy)
                 {
-                    cd = count;
+                    cd = i;
                     break;
                 }
             }
@@ -145,27 +153,31 @@ namespace Matrix
             dy = dirY[cd + 1];
         }
 
-        private bool CheckAvailability(int[,] arr, int x, int y)
+        private bool CheckAvailability(int x, int y)
         {
+            // possible directions according to current x/y (1 means below/next current row/col, -1 above/before, 0 the
+            // same row/col)
             int[] dirX = { 1, 1, 1, 0, -1, -1, -1, 0 };
             int[] dirY = { 1, 0, -1, -1, -1, 0, 1, 1 };
 
+            // Check if position is inside the matrix
             for (int i = 0; i < 8; i++)
             {
-                if (x + dirX[i] >= arr.GetLength(0) || x + dirX[i] < 0)
+                if (x + dirX[i] >= this.SizeN || x + dirX[i] < 0)
                 {
                     dirX[i] = 0;
                 }
 
-                if (y + dirY[i] >= arr.GetLength(0) || y + dirY[i] < 0)
+                if (y + dirY[i] >= this.SizeN || y + dirY[i] < 0)
                 {
                     dirY[i] = 0;
                 }
             }
 
+            // Check if the cell is empty
             for (int i = 0; i < 8; i++)
             {
-                if (arr[x + dirX[i], y + dirY[i]] == 0)
+                if (this.matrix[x + dirX[i], y + dirY[i]] == 0)
                 {
                     return true;
                 }
@@ -174,15 +186,15 @@ namespace Matrix
             return false;
         }
 
-        private void FindCell(int[,] arr, out int x, out int y)
+        private void FindCell(ref int x, ref int y)
         {
             x = 0;
             y = 0;
-            for (int row = 0; row < arr.GetLength(0); row++)
+            for (int row = 0; row < this.SizeN; row++)
             {
-                for (int col = 0; col < arr.GetLength(0); col++)
+                for (int col = 0; col < this.SizeN; col++)
                 {
-                    if (arr[row, col] == 0)
+                    if (this.matrix[row, col] == 0)
                     {
                         x = row;
                         y = col;
@@ -192,13 +204,13 @@ namespace Matrix
             }
         }
 
-        private void Print(int[,] matrix, IWritable writer)
+        private void Print(IWritable writer)
         {
-            for (int row = 0; row < matrix.GetLength(0); row++)
+            for (int row = 0; row < this.SizeN; row++)
             {
-                for (int col = 0; col < matrix.GetLength(1); col++)
+                for (int col = 0; col < this.SizeN; col++)
                 {
-                    writer.Write(string.Format("{0,3}", matrix[row, col]));
+                    writer.Write(string.Format("{0,3}", this.matrix[row, col]));
                 }
 
                 writer.WriteLine();
