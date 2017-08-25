@@ -12,24 +12,36 @@
     /// </summary>
     public static class Convertor
     {
+        /// <summary>
+        /// Entry point of the OneSystemToOther Console Application
+        /// </summary>
         public static void Main()
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
 
             Console.WriteLine("Please specify the base s: ");
-            int baseS = 10;
+            int baseS = int.Parse(Console.ReadLine());  // 10
 
             Console.WriteLine("Please enter the base {0} number to convert from: ", baseS);
-            string number = "1985";
+            string number = Console.ReadLine().ToUpper();   // "1985"
 
             Console.WriteLine("Please specify the base d: ");
-            int baseD = 2;
+            int baseD = int.Parse(Console.ReadLine());  // 2
 
             string convertedNumber = Convertor.Execute(baseS, number, baseD);
 
             Console.WriteLine("{0} in base({1}) system is\n{2} in base({3}) system", number, baseS, convertedNumber, baseD);
+            // prevents closing of the console window after execution
+            Console.ReadLine();
         }
 
+        /// <summary>
+        /// Validates bases, than validates number and finally converts the number from baseS into number from baseD numeral system
+        /// </summary>
+        /// <param name="baseS">Numeral system base to convert from</param>
+        /// <param name="number">Number in baseS numeral system</param>
+        /// <param name="baseD">Numeral system base to convert to</param>
+        /// <returns>Number in baseD numeral system</returns>
         public static string Execute(int baseS, string number, int baseD)
         {            
             ValidateBases(baseS, baseD);
@@ -40,6 +52,13 @@
             return convertedValue;
         }
         
+        /// <summary>
+        /// Converts the number from baseS system into base 10 system, then from base 10 into baseD system
+        /// </summary>
+        /// <param name="number">The number to be converted</param>
+        /// <param name="baseS">Base to be converted from</param>
+        /// <param name="baseD">Base to be converted to</param>
+        /// <returns>Number converted from baseS system into baseD system, without any leading zeros</returns>
         private static string Convert(string number, int baseS, int baseD)
         {
             BigInteger decimalNum = ConvertToDecimal(number, baseS);
@@ -73,10 +92,10 @@
         }
 
         /// <summary>
-        /// Removes any leading zeros, if any
+        /// Removes any leading zeros, if present
         /// </summary>
         /// <param name="convertedValue">The number to be cleaned from zeros</param>
-        /// <returns>The number's string with no leading zeros</returns>
+        /// <returns>The number with no leading zeros</returns>
         private static string RemoveLeadingZeroes(string convertedValue)
         {
             StringBuilder converted = new StringBuilder(convertedValue);
@@ -119,6 +138,12 @@
             }
         }
 
+        /// <summary>
+        /// Converts the baseS number into base 10 system
+        /// </summary>
+        /// <param name="number">The baseS number</param>
+        /// <param name="baseS">The base system to convert from</param>
+        /// <returns>BigInteger number that represents the baseS number in base 10 numeral system</returns>
         private static BigInteger ConvertToDecimal(string number, int baseS)
         {
             BigInteger decimalNum = 0;
@@ -163,6 +188,12 @@
             return decimalNum;
         }
 
+        /// <summary>
+        /// Converts a BigInteger base 10 number into baseD numeral system
+        /// </summary>
+        /// <param name="decimalNum">A number in base 10</param>
+        /// <param name="baseD">The base system to convert to</param>
+        /// <returns>The converted baseD number</returns>
         private static string ConvertFromDecimal(BigInteger decimalNum, int baseD)
         {
             string convertedValue = string.Empty;

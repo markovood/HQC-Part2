@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpTOC>
+
+  <HelpTOCNode Id="78077db4-68f4-4f40-9566-d13001fb4ca7" Title="OneSystemToOther" Url="html/b4fc8bb1-7a5b-bb62-ff5e-d44886bb5295.htm">
+    <HelpTOCNode Id="21c85b65-cefe-406f-b8f2-dc05bdca1dba" Title="Convertor Class" Url="html/7c5d4183-4c6d-fdbd-c0eb-9626e6dc1016.htm">
+      <HelpTOCNode Id="ecb362e8-1c77-4566-844b-f76580bb843f" Title="Convertor Methods" Url="html/fe82b972-f715-45e9-56a3-bd12da95a155.htm">
+        <HelpTOCNode Title="Convert Method " Url="html/c8afd5af-9e82-e8a8-6fa9-b738b00427ea.htm" />
+        <HelpTOCNode Title="ConvertFromDecimal Method " Url="html/f3deac95-633a-a810-35f3-e0bb340786a5.htm" />
+        <HelpTOCNode Title="ConvertToDecimal Method " Url="html/bfe2e36e-de2b-2ed0-ecc0-c1fa5197947d.htm" />
+        <HelpTOCNode Title="Execute Method " Url="html/3a5ba144-a44f-9b88-1baf-495261e3438e.htm" />
+        <HelpTOCNode Title="Main Method " Url="html/69122d45-083f-19e0-3256-129154b1f919.htm" />
+        <HelpTOCNode Title="RemoveLeadingZeroes Method " Url="html/0e514fd2-7a48-961c-e93e-fb8a3a13079d.htm" />
+        <HelpTOCNode Title="ValidateBases Method " Url="html/55542b44-c621-4299-1782-f8d4ff6e59c3.htm" />
+        <HelpTOCNode Title="ValidateNumber Method " Url="html/88c34dc7-8abb-2b5e-0f1a-784df0a75bb2.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+</HelpTOC>
