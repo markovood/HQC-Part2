@@ -31,6 +31,7 @@
             string convertedNumber = Convertor.Execute(baseS, number, baseD);
 
             Console.WriteLine("{0} in base({1}) system is\n{2} in base({3}) system", number, baseS, convertedNumber, baseD);
+            
             // prevents closing of the console window after execution
             Console.ReadLine();
         }
