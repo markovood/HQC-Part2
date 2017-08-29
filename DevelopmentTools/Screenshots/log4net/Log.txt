@@ -1,0 +1,93 @@
+30 Aug 2017 00:27:10,365
+User: ASUS\BOSS
+Logger: [OneSystemToOther.Convertor]
+Thread: [10]
+Level: INFO
+Message: Started conversion: 1985 from base10 to base2
+Exception: 
+30 Aug 2017 00:27:10,454
+User: ASUS\BOSS
+Logger: [OneSystemToOther.Convertor]
+Thread: [10]
+Level: DEBUG
+Message: Bases are valid :)
+Exception: 
+30 Aug 2017 00:27:10,455
+User: ASUS\BOSS
+Logger: [OneSystemToOther.Convertor]
+Thread: [10]
+Level: DEBUG
+Message: Number is valid :)
+Exception: 
+30 Aug 2017 00:27:10,455
+User: ASUS\BOSS
+Logger: [OneSystemToOther.Convertor]
+Thread: [10]
+Level: INFO
+Message: Conversion started...
+Exception: 
+30 Aug 2017 00:27:10,456
+User: ASUS\BOSS
+Logger: [OneSystemToOther.Convertor]
+Thread: [10]
+Level: DEBUG
+Message: Converting from base10 to decimal...
+Exception: 
+30 Aug 2017 00:27:10,478
+User: ASUS\BOSS
+Logger: [OneSystemToOther.Convertor]
+Thread: [10]
+Level: DEBUG
+Message: Done!
+Converting from decimal to base2...
+Exception: 
+30 Aug 2017 00:27:10,480
+User: ASUS\BOSS
+Logger: [OneSystemToOther.Convertor]
+Thread: [10]
+Level: DEBUG
+Message: Done!
+Removing leading zeros if any...
+Exception: 
+30 Aug 2017 00:27:10,481
+User: ASUS\BOSS
+Logger: [OneSystemToOther.Convertor]
+Thread: [10]
+Level: DEBUG
+Message: Done!
+Exception: 
+30 Aug 2017 00:27:10,481
+User: ASUS\BOSS
+Logger: [OneSystemToOther.Convertor]
+Thread: [10]
+Level: INFO
+Message: Conversion finished!
+Exception: 
+30 Aug 2017 00:27:10,482
+User: ASUS\BOSS
+Logger: [OneSystemToOther.Convertor]
+Thread: [10]
+Level: INFO
+Message: Conversion done successfully!
+Exception: 
+30 Aug 2017 00:30:11,664
+User: ASUS\BOSS
+Logger: [OneSystemToOther.Convertor]
+Thread: [10]
+Level: INFO
+Message: Started conversion: 12 from base1 to base17
+Exception: 
+30 Aug 2017 00:30:11,685
+User: ASUS\BOSS
+Logger: [OneSystemToOther.Convertor]
+Thread: [10]
+Level: ERROR
+Message: Entered invalid input for baseS - 1
+Exception: 
+30 Aug 2017 00:30:11,687
+User: ASUS\BOSS
+Logger: [OneSystemToOther.Convertor]
+Thread: [10]
+Level: FATAL
+Message: BaseS cannot be less than 2 or greater than 16
+Exception: 

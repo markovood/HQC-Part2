@@ -1,0 +1,3 @@
+https://www.codeproject.com/Articles/140911/log-net-Tutorial
+
+https://logging.apache.org/log4net/release/config-examples.html

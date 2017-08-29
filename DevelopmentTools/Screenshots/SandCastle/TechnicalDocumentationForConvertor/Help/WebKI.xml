@@ -5,18 +5,23 @@
   <HelpKINode Title="Convertor class">
     <HelpKINode Title="Convertor Class" Url="html/7c5d4183-4c6d-fdbd-c0eb-9626e6dc1016.htm" />
     <HelpKINode Title="about Convertor class" Url="html/7c5d4183-4c6d-fdbd-c0eb-9626e6dc1016.htm" />
+    <HelpKINode Title="constructor" Url="html/88a7b9ab-114e-e098-9e53-e75b57423d13.htm" />
+    <HelpKINode Title="fields" Url="html/8740701e-6dc0-4ff8-f77d-82a283493c92.htm" />
     <HelpKINode Title="methods" Url="html/fe82b972-f715-45e9-56a3-bd12da95a155.htm" />
   </HelpKINode>
   <HelpKINode Title="Convertor.Convert method" Url="html/c8afd5af-9e82-e8a8-6fa9-b738b00427ea.htm" />
   <HelpKINode Title="Convertor.ConvertFromDecimal method" Url="html/f3deac95-633a-a810-35f3-e0bb340786a5.htm" />
+  <HelpKINode Title="Convertor.Convertor constructor" Url="html/88a7b9ab-114e-e098-9e53-e75b57423d13.htm" />
   <HelpKINode Title="Convertor.ConvertToDecimal method" Url="html/bfe2e36e-de2b-2ed0-ecc0-c1fa5197947d.htm" />
   <HelpKINode Title="Convertor.Execute method" Url="html/3a5ba144-a44f-9b88-1baf-495261e3438e.htm" />
+  <HelpKINode Title="Convertor.Logger field" Url="html/b03fcc78-2e9e-6f0d-9665-3ae0e541e42a.htm" />
   <HelpKINode Title="Convertor.Main method" Url="html/69122d45-083f-19e0-3256-129154b1f919.htm" />
   <HelpKINode Title="Convertor.RemoveLeadingZeroes method" Url="html/0e514fd2-7a48-961c-e93e-fb8a3a13079d.htm" />
   <HelpKINode Title="Convertor.ValidateBases method" Url="html/55542b44-c621-4299-1782-f8d4ff6e59c3.htm" />
   <HelpKINode Title="Convertor.ValidateNumber method" Url="html/88c34dc7-8abb-2b5e-0f1a-784df0a75bb2.htm" />
   <HelpKINode Title="ConvertToDecimal method" Url="html/bfe2e36e-de2b-2ed0-ecc0-c1fa5197947d.htm" />
   <HelpKINode Title="Execute method" Url="html/3a5ba144-a44f-9b88-1baf-495261e3438e.htm" />
+  <HelpKINode Title="Logger field" Url="html/b03fcc78-2e9e-6f0d-9665-3ae0e541e42a.htm" />
   <HelpKINode Title="Main method" Url="html/69122d45-083f-19e0-3256-129154b1f919.htm" />
   <HelpKINode Title="OneSystemToOther namespace" Url="html/b4fc8bb1-7a5b-bb62-ff5e-d44886bb5295.htm" />
   <HelpKINode Title="OneSystemToOther.Convertor class" Url="html/7c5d4183-4c6d-fdbd-c0eb-9626e6dc1016.htm" />

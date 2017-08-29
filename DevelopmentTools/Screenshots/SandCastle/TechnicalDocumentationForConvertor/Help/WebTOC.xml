@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <HelpTOC>
 
-  <HelpTOCNode Id="78077db4-68f4-4f40-9566-d13001fb4ca7" Title="OneSystemToOther" Url="html/b4fc8bb1-7a5b-bb62-ff5e-d44886bb5295.htm">
-    <HelpTOCNode Id="21c85b65-cefe-406f-b8f2-dc05bdca1dba" Title="Convertor Class" Url="html/7c5d4183-4c6d-fdbd-c0eb-9626e6dc1016.htm">
-      <HelpTOCNode Id="ecb362e8-1c77-4566-844b-f76580bb843f" Title="Convertor Methods" Url="html/fe82b972-f715-45e9-56a3-bd12da95a155.htm">
+  <HelpTOCNode Id="976abfd5-7898-4877-9d77-250d6d69bf86" Title="OneSystemToOther" Url="html/b4fc8bb1-7a5b-bb62-ff5e-d44886bb5295.htm">
+    <HelpTOCNode Id="1a06a931-8da7-435c-b100-67fb9a22d685" Title="Convertor Class" Url="html/7c5d4183-4c6d-fdbd-c0eb-9626e6dc1016.htm">
+      <HelpTOCNode Title="Convertor Constructor " Url="html/88a7b9ab-114e-e098-9e53-e75b57423d13.htm" />
+      <HelpTOCNode Id="e565f02b-86b5-446b-ac20-a29a6c4cda98" Title="Convertor Methods" Url="html/fe82b972-f715-45e9-56a3-bd12da95a155.htm">
         <HelpTOCNode Title="Convert Method " Url="html/c8afd5af-9e82-e8a8-6fa9-b738b00427ea.htm" />
         <HelpTOCNode Title="ConvertFromDecimal Method " Url="html/f3deac95-633a-a810-35f3-e0bb340786a5.htm" />
         <HelpTOCNode Title="ConvertToDecimal Method " Url="html/bfe2e36e-de2b-2ed0-ecc0-c1fa5197947d.htm" />
@@ -12,6 +13,9 @@
         <HelpTOCNode Title="RemoveLeadingZeroes Method " Url="html/0e514fd2-7a48-961c-e93e-fb8a3a13079d.htm" />
         <HelpTOCNode Title="ValidateBases Method " Url="html/55542b44-c621-4299-1782-f8d4ff6e59c3.htm" />
         <HelpTOCNode Title="ValidateNumber Method " Url="html/88c34dc7-8abb-2b5e-0f1a-784df0a75bb2.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="8239c7de-8ac7-404a-aea0-019c0ce07e0b" Title="Convertor Fields" Url="html/8740701e-6dc0-4ff8-f77d-82a283493c92.htm">
+        <HelpTOCNode Title="Logger Field" Url="html/b03fcc78-2e9e-6f0d-9665-3ae0e541e42a.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
   </HelpTOCNode>
